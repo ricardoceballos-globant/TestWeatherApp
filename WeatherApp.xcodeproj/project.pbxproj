@@ -38,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4709853B1FBA25BF0017D769 /* Starjout.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Starjout.ttf; sourceTree = "<group>"; };
+		4709853C1FBA25D10017D769 /* STJEDISE.TTF */ = {isa = PBXFileReference; lastKnownFileType = file; path = STJEDISE.TTF; sourceTree = "<group>"; };
 		4715D1B21FB6369E007C5AC6 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4715D1B51FB6369E007C5AC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4715D1B71FB6369E007C5AC6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,8 @@
 		4715D1B41FB6369E007C5AC6 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				4709853C1FBA25D10017D769 /* STJEDISE.TTF */,
+				4709853B1FBA25BF0017D769 /* Starjout.ttf */,
 				4715D1B51FB6369E007C5AC6 /* AppDelegate.swift */,
 				4715D1B71FB6369E007C5AC6 /* ViewController.swift */,
 				4715D1B91FB6369E007C5AC6 /* Main.storyboard */,

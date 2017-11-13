@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ConnectionProtocol {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ConnectionProtocol, CLLocationManagerDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -16,11 +17,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     var conn : Connection? = nil
     
+    var locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
-        conn = Connection(withDelegate:self)
-        conn?.start(urlPath: "http://samples.openweathermap.org/data/2.5/weather?lat=35&lon=139&appid=b1b15e88fa797225412429c1c50c122a1")
+        locationManager.delegate = self;
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.distanceFilter = 1500.0
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
         
         weatherReport = WeatherReport()
     }
@@ -67,6 +74,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
         return cell
     }
+     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        let locationArray = locations as NSArray
+        let locationObj = locationArray.lastObject as! CLLocation
+        let coord = locationObj.coordinate
+        
+        self.conn = Connection(withDelegate:self)
+        self.conn?.start(urlPath: "http://samples.openweathermap.org/data/2.5/weather?lat=\(coord.latitude)&lon=\(coord.longitude)&appid=b1b15e88fa797225412429c1c50c122a1")
+    }
     
     func tableView(_ table: UITableView, numberOfRowsInSection: Int) -> Int  {
         return 1
@@ -91,4 +107,3 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         print(error);
     }
 }
-

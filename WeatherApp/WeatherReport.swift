@@ -44,10 +44,6 @@ class WeatherReport: NSObject {
                 self.weatherDescription = weather["description"]! as! String
             }
             
-            if let base = dictionary["base"] as? [String] {
-                // access individual value in dictionary
-            }
-            
             if let main = dictionary["main"] as? [String: Any] {
                 self.temp = (main["temp"] as?  Double)!
                 self.pressure = main["pressure"] as! Double
@@ -62,40 +58,15 @@ class WeatherReport: NSObject {
                 self.windDeg = wind["deg"] as!  Double
             }
             
-            if let clouds = dictionary["clouds"] as? [String: Any] {
-                // access individual value in dictionary
-            }
-            
-            if let dt = dictionary["dt"] as? Int {
-                // access individual value in dictionary
-            }
-            
             if let sys = dictionary["sys"] as? [String: Any] {
                 self.sunrise = sys["sunrise"] as! Double
                 self.sunset = sys["sunset"] as!  Double
             }
             
-            if let id = dictionary["id"] as? Int {
-                // access individual value in dictionary
-            }
-            
             if let name = dictionary["name"] as? String {
-                // access individual value in dictionary
                 self.name = name
             }
             
-            if let cod = dictionary["cod"] as? [String: Any] {
-                // access individual value in dictionary
-            }
-            
-            for (key, value) in dictionary {
-                // access all key / value pairs in dictionary
-            }
-            
-            if let nestedDictionary = dictionary["anotherKey"] as? [String: Any] {
-                // access nested dictionary values by key
-            }
         }
-        
     }
 }
