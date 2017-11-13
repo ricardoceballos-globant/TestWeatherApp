@@ -9,7 +9,10 @@
 import UIKit
 
 class WeatherReportCell: UITableViewCell {
+    @IBOutlet weak var mainLabel: UILabel!
     @IBOutlet weak var tempMinLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var seaLevelLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
@@ -21,8 +24,7 @@ class WeatherReportCell: UITableViewCell {
     @IBOutlet weak var latLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var descripcionClimaLabel: UILabel!
-    
+ 
     override func awakeFromNib() {
 
         super.awakeFromNib()

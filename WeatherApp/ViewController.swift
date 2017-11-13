@@ -35,24 +35,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! WeatherReportCell
         
         if let weatherReportLoc = weatherReport {
-            cell.descripcionClimaLabel?.text = weatherReportLoc.name
-            cell.lonLabel?.text = weatherReportLoc.lon?.description
-            cell.latLabel?.text =  weatherReportLoc.lat?.description
-            cell.humidityLabel?.text =  weatherReportLoc.humidity?.description
-            cell.pressureLabel?.text =  weatherReportLoc.pressure?.description
-            cell.tempLabel?.text =  weatherReportLoc.temp?.description
+           
+            cell.lonLabel?.text = weatherReportLoc.lon.description
+            cell.latLabel?.text =  weatherReportLoc.lat.description
             
-            cell.tempMaxLabel?.text =  weatherReportLoc.tempMax?.description
-            cell.tempMinLabel?.text =  weatherReportLoc.tempMin?.description
-            cell.seaLevelLabel?.text =  weatherReportLoc.seaLevel?.description
-            cell.windSpeedLabel?.text =  weatherReportLoc.windSpeed?.description
-            cell.windDegLabel?.text =  weatherReportLoc.windDeg?.description
+            cell.mainLabel?.text =  weatherReportLoc.weatherMain.description
+            cell.descLabel?.text =  weatherReportLoc.weatherDescription.description
             
-            cell.sunriseLabel?.text =  weatherReportLoc.sunrise?.description
-            cell.sunsetLabel?.text =  weatherReportLoc.sunset?.description
+            cell.humidityLabel?.text =  weatherReportLoc.humidity.description
+            cell.pressureLabel?.text =  weatherReportLoc.pressure.description
+            cell.tempLabel?.text =  weatherReportLoc.temp.description
+            
+            cell.tempMaxLabel?.text =  weatherReportLoc.tempMax.description
+            cell.tempMinLabel?.text =  weatherReportLoc.tempMin.description
+            cell.seaLevelLabel?.text =  weatherReportLoc.seaLevel.description
+            cell.windSpeedLabel?.text =  weatherReportLoc.windSpeed.description
+            cell.windDegLabel?.text =  weatherReportLoc.windDeg.description
+            
+            let formatter = DateComponentsFormatter()
+            formatter.allowedUnits = [.hour, .minute, .second]
+            formatter.unitsStyle = .brief
+            
+            var formattedString = formatter.string(from: weatherReportLoc.sunrise)!
+            cell.sunriseLabel?.text =  formattedString
+            
+            formattedString = formatter.string(from: weatherReportLoc.sunset)!
+            cell.sunsetLabel?.text = formattedString
+            
+             cell.nameLabel?.text = weatherReportLoc.name
         }
 
-        
         return cell
     }
     
