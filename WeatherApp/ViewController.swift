@@ -36,20 +36,20 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if let weatherReportLoc = weatherReport {
             cell.descripcionClimaLabel?.text = weatherReportLoc.name
-            cell.lonLabel?.text = String(describing: weatherReportLoc.lon)
-            cell.latLabel?.text = String(describing: weatherReportLoc.lat)
-            cell.humidityLabel?.text = String(describing: weatherReportLoc.humidity)
-            cell.pressureLabel?.text = String(describing: weatherReportLoc.pressure)
-            cell.tempLabel?.text = String(describing: weatherReportLoc.temp)
+            cell.lonLabel?.text = weatherReportLoc.lon?.description
+            cell.latLabel?.text =  weatherReportLoc.lat?.description
+            cell.humidityLabel?.text =  weatherReportLoc.humidity?.description
+            cell.pressureLabel?.text =  weatherReportLoc.pressure?.description
+            cell.tempLabel?.text =  weatherReportLoc.temp?.description
             
-            cell.tempMaxLabel?.text = String(describing: weatherReportLoc.tempMax)
-            cell.tempMinLabel?.text = String(describing: weatherReportLoc.tempMin)
-            cell.seaLevelLabel?.text = String(describing: weatherReportLoc.seaLevel)
-            cell.windSpeedLabel?.text = String(describing: weatherReportLoc.windSpeed)
-            cell.windDegLabel?.text = String(describing: weatherReportLoc.windDeg)
+            cell.tempMaxLabel?.text =  weatherReportLoc.tempMax?.description
+            cell.tempMinLabel?.text =  weatherReportLoc.tempMin?.description
+            cell.seaLevelLabel?.text =  weatherReportLoc.seaLevel?.description
+            cell.windSpeedLabel?.text =  weatherReportLoc.windSpeed?.description
+            cell.windDegLabel?.text =  weatherReportLoc.windDeg?.description
             
-            cell.sunriseLabel?.text = String(describing: weatherReportLoc.sunrise)
-            cell.sunsetLabel?.text = String(describing: weatherReportLoc.sunset)
+            cell.sunriseLabel?.text =  weatherReportLoc.sunrise?.description
+            cell.sunsetLabel?.text =  weatherReportLoc.sunset?.description
         }
 
         
