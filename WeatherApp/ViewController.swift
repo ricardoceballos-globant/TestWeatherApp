@@ -29,7 +29,7 @@ class ViewController: UIViewController, ConnectionProtocol, CLLocationManagerDel
         
     var weatherReport: WeatherReport?
     
-    var conn : Connection? = nil
+    var conn : Connection?
     
     var locationManager = CLLocationManager()
     
@@ -39,7 +39,7 @@ class ViewController: UIViewController, ConnectionProtocol, CLLocationManagerDel
         
         locationManager.delegate = self;
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.distanceFilter = 1500.0
+        locationManager.distanceFilter = 1_500.0
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
@@ -87,8 +87,8 @@ class ViewController: UIViewController, ConnectionProtocol, CLLocationManagerDel
     
      public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        let locationArray = locations as NSArray
-        let locationObj = locationArray.lastObject as! CLLocation
+        let locationArray = locations as [CLLocation]
+        let locationObj = locationArray.last as! CLLocation
         let coord = locationObj.coordinate
         
         self.conn = Connection(withDelegate:self)
@@ -104,7 +104,11 @@ class ViewController: UIViewController, ConnectionProtocol, CLLocationManagerDel
         
         let jsonObject = JSONUtil.getJSONFromData(data)
         weatherReport = WeatherReport(jsonObject)
-        populateFields();
+        
+        DispatchQueue.main.async {
+           self.populateFields();
+           self.view.setNeedsDisplay()
+        }
     }
     
     func didConnectWithError(error : Error) {
