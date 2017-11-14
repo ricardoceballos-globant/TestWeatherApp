@@ -9,10 +9,24 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, ConnectionProtocol, CLLocationManagerDelegate {
+class ViewController: UIViewController, ConnectionProtocol, CLLocationManagerDelegate {
     
-    @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var tempMinLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var seaLevelLabel: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
+    @IBOutlet weak var windDegLabel: UILabel!
+    @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var tempMaxLabel: UILabel!
+    @IBOutlet weak var lonLabel: UILabel!
+    @IBOutlet weak var latLabel: UILabel!
+    @IBOutlet weak var pressureLabel: UILabel!
+    @IBOutlet weak var tempLabel: UILabel!
+        
     var weatherReport: WeatherReport?
     
     var conn : Connection? = nil
@@ -37,43 +51,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath) as! WeatherReportCell
+    func populateFields() {
         
         if let weatherReportLoc = weatherReport {
            
-            cell.lonLabel?.text = weatherReportLoc.lon.description
-            cell.latLabel?.text =  weatherReportLoc.lat.description
+            self.lonLabel?.text = weatherReportLoc.lon.description
+            self.latLabel?.text =  weatherReportLoc.lat.description
             
-            cell.mainLabel?.text =  weatherReportLoc.weatherMain.description
-            cell.descLabel?.text =  weatherReportLoc.weatherDescription.description
+            self.mainLabel?.text =  weatherReportLoc.weatherMain.description
+            self.descLabel?.text =  weatherReportLoc.weatherDescription.description
             
-            cell.humidityLabel?.text =  weatherReportLoc.humidity.description
-            cell.pressureLabel?.text =  weatherReportLoc.pressure.description
-            cell.tempLabel?.text =  weatherReportLoc.temp.description
+            self.humidityLabel?.text =  weatherReportLoc.humidity.description
+            self.pressureLabel?.text =  weatherReportLoc.pressure.description
+            self.tempLabel?.text =  weatherReportLoc.temp.description
             
-            cell.tempMaxLabel?.text =  weatherReportLoc.tempMax.description
-            cell.tempMinLabel?.text =  weatherReportLoc.tempMin.description
-            cell.seaLevelLabel?.text =  weatherReportLoc.seaLevel.description
-            cell.windSpeedLabel?.text =  weatherReportLoc.windSpeed.description
-            cell.windDegLabel?.text =  weatherReportLoc.windDeg.description
+            self.tempMaxLabel?.text =  weatherReportLoc.tempMax.description
+            self.tempMinLabel?.text =  weatherReportLoc.tempMin.description
+            self.seaLevelLabel?.text =  weatherReportLoc.seaLevel.description
+            self.windSpeedLabel?.text =  weatherReportLoc.windSpeed.description
+            self.windDegLabel?.text =  weatherReportLoc.windDeg.description
             
             let formatter = DateComponentsFormatter()
             formatter.allowedUnits = [.hour, .minute, .second]
             formatter.unitsStyle = .brief
             
             var formattedString = formatter.string(from: weatherReportLoc.sunrise)!
-            cell.sunriseLabel?.text =  formattedString
+            self.sunriseLabel?.text =  formattedString
             
             formattedString = formatter.string(from: weatherReportLoc.sunset)!
-            cell.sunsetLabel?.text = formattedString
+            self.sunsetLabel?.text = formattedString
             
-             cell.nameLabel?.text = weatherReportLoc.name
+            self.nameLabel?.text = weatherReportLoc.name
         }
-
-        return cell
     }
+    
      public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let locationArray = locations as NSArray
@@ -89,18 +100,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
     }
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
     func didConnectWithResultData(data : Data) {
         
         let jsonObject = JSONUtil.getJSONFromData(data)
         weatherReport = WeatherReport(jsonObject)
-        DispatchQueue.main.async{
-            self.tableView.reloadData()
-        }
+        populateFields();
     }
     
     func didConnectWithError(error : Error) {

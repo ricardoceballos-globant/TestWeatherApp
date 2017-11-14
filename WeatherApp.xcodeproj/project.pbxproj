@@ -17,7 +17,6 @@
 		4715D1E41FB638B4007C5AC6 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4715D1E31FB638B4007C5AC6 /* Connection.swift */; };
 		4715D1E61FB63F00007C5AC6 /* JSONUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4715D1E51FB63F00007C5AC6 /* JSONUtil.swift */; };
 		4715D1E81FB63F5F007C5AC6 /* WeatherReport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4715D1E71FB63F5F007C5AC6 /* WeatherReport.swift */; };
-		47943B0D1FB64A9500623DCB /* WeatherReportCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47943B0C1FB64A9500623DCB /* WeatherReportCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +55,6 @@
 		4715D1E31FB638B4007C5AC6 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		4715D1E51FB63F00007C5AC6 /* JSONUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONUtil.swift; sourceTree = "<group>"; };
 		4715D1E71FB63F5F007C5AC6 /* WeatherReport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeatherReport.swift; sourceTree = "<group>"; };
-		47943B0C1FB64A9500623DCB /* WeatherReportCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherReportCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,7 +116,6 @@
 				4715D1E31FB638B4007C5AC6 /* Connection.swift */,
 				4715D1E51FB63F00007C5AC6 /* JSONUtil.swift */,
 				4715D1E71FB63F5F007C5AC6 /* WeatherReport.swift */,
-				47943B0C1FB64A9500623DCB /* WeatherReportCell.swift */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -279,7 +276,6 @@
 				4715D1E61FB63F00007C5AC6 /* JSONUtil.swift in Sources */,
 				4715D1E81FB63F5F007C5AC6 /* WeatherReport.swift in Sources */,
 				4715D1E41FB638B4007C5AC6 /* Connection.swift in Sources */,
-				47943B0D1FB64A9500623DCB /* WeatherReportCell.swift in Sources */,
 				4715D1B61FB6369E007C5AC6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
